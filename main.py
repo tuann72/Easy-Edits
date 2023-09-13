@@ -1,6 +1,7 @@
 import customtkinter as ctk
 from image_widgets import *
 from PIL import Image, ImageTk
+from menu import Menu
 
 
 class App(ctk.CTk):
@@ -14,8 +15,8 @@ class App(ctk.CTk):
 
         # layout
         self.rowconfigure(0, weight=1)
-        self.columnconfigure(0, weight=2)
-        self.columnconfigure(1, weight=6)
+        self.columnconfigure(0, weight=2, uniform="a")
+        self.columnconfigure(1, weight=6, uniform="a")
 
         # widgets
         # importbutton
@@ -32,6 +33,7 @@ class App(ctk.CTk):
         self.image_import_btn.grid_forget()
         self.image_output = ImageOutput(self, self.resize_image)
         self.closed_btn = CloseOutput(self, self.close_edit)
+        self.menu = Menu(self)
 
     def resize_image(self, event):
         # Current Canvas Ratio
@@ -57,7 +59,7 @@ class App(ctk.CTk):
     def close_edit(self):
         self.image_output.grid_forget()
         self.image_output.place_forget()
-
+        self.menu.grid_forget()
         self.image_import_btn = ImageImport(self, self.import_image)
 
 
