@@ -31,6 +31,7 @@ class App(ctk.CTk):
 
         self.image_import_btn.grid_forget()
         self.image_output = ImageOutput(self, self.resize_image)
+        self.closed_btn = CloseOutput(self, self.close_edit)
 
     def resize_image(self, event):
         # Current Canvas Ratio
@@ -52,6 +53,12 @@ class App(ctk.CTk):
         self.image_output.create_image(
             event.width / 2, event.height / 2, image=self.image_tk
         )
+
+    def close_edit(self):
+        self.image_output.grid_forget()
+        self.image_output.place_forget()
+
+        self.image_import_btn = ImageImport(self, self.import_image)
 
 
 App()
