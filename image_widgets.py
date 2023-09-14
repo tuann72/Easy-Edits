@@ -38,10 +38,26 @@ class CloseOutput(ctk.CTkButton):
             command=close_func,
             text="x",
             text_color=WHITE,
-            fg_color="transparent",
+            fg_color="#3492DF",
             width=40,
             height=40,
-            corner_radius=0,
+            corner_radius=12,
             hover_color=CLOSE_RED,
         )
         self.place(relx=0.99, rely=0.01, anchor="ne")
+
+
+class ModeSwitch(ctk.CTkButton):
+    def __init__(self, parent, mode_func):
+        super().__init__(
+            master=parent,
+            command=mode_func,
+            text="Change Theme",
+            text_color=WHITE,
+            fg_color="#3492DF",
+            width=40,
+            height=40,
+            corner_radius=12,
+            hover_color="#66A9E0",
+        )
+        self.place(relx=0.93, rely=0.01, anchor="ne")
